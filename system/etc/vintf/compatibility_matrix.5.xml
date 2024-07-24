@@ -1554,6 +1554,10 @@
             <key>CONFIG_XFRM_USER</key>
             <value type="tristate">y</value>
         </config>
+        <config>
+            <key>CONFIG_DEBUG_FS</key>
+            <value type="tristate">n</value>
+        </config>
     </kernel>
     <kernel version="4.14.180" level="5">
         <conditions>
@@ -2708,6 +2712,10 @@
             <key>CONFIG_XFRM_USER</key>
             <value type="tristate">y</value>
         </config>
+        <config>
+            <key>CONFIG_DEBUG_FS</key>
+            <value type="tristate">n</value>
+        </config>
     </kernel>
     <kernel version="4.19.110" level="5">
         <conditions>
@@ -3857,6 +3865,10 @@
         <config>
             <key>CONFIG_XFRM_USER</key>
             <value type="tristate">y</value>
+        </config>
+        <config>
+            <key>CONFIG_DEBUG_FS</key>
+            <value type="tristate">n</value>
         </config>
     </kernel>
     <kernel version="5.4.42" level="5">

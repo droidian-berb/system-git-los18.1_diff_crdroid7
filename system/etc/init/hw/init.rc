@@ -812,7 +812,6 @@ on zygote-start && property:persist.sys.fuse=""
 on zygote-start && property:ro.crypto.state=unencrypted
     # A/B update verifier that marks a successful boot.
     exec_start update_verifier_nonencrypted
-    start statsd
     start netd
     start zygote
     start zygote_secondary
@@ -820,7 +819,6 @@ on zygote-start && property:ro.crypto.state=unencrypted
 on zygote-start && property:ro.crypto.state=unsupported
     # A/B update verifier that marks a successful boot.
     exec_start update_verifier_nonencrypted
-    start statsd
     start netd
     start zygote
     start zygote_secondary
@@ -828,10 +826,14 @@ on zygote-start && property:ro.crypto.state=unsupported
 on zygote-start && property:ro.crypto.state=encrypted && property:ro.crypto.type=file
     # A/B update verifier that marks a successful boot.
     exec_start update_verifier_nonencrypted
-    start statsd
     start netd
     start zygote
     start zygote_secondary
+
+on boot && property:ro.config.low_ram=true
+    # Tweak background writeout
+    write /proc/sys/vm/dirty_expire_centisecs 200
+    write /proc/sys/vm/dirty_background_ratio  5
 
 on boot
     # basic network init
@@ -854,17 +856,12 @@ on boot
     chown root system /sys/block/zram0/writeback
     chmod 0664 /sys/block/zram0/writeback
 
-    # Tweak background writeout
-    write /proc/sys/vm/dirty_expire_centisecs 200
-    write /proc/sys/vm/dirty_background_ratio  5
-
     # F2FS tuning. Set cp_interval larger than dirty_expire_centisecs
     # to avoid power consumption when system becomes mostly idle. Be careful
     # to make it too large, since it may bring userdata loss, if they
     # are not aware of using fsync()/sync() to prepare sudden power-cut.
     write /sys/fs/f2fs/${dev.mnt.blk.data}/cp_interval 200
     write /sys/fs/f2fs/${dev.mnt.blk.data}/gc_urgent_sleep_time 50
-    write /sys/fs/f2fs/${dev.mnt.blk.data}/iostat_enable 1
 
     # limit discard size to 128MB in order to avoid long IO latency
     # for filesystem tuning first (dm or sda)

@@ -286,6 +286,8 @@ dalvik.vm.backgroundgctype u:object_r:exported_dalvik_prop:s0 exact string
 dalvik.vm.boot-dex2oat-cpu-set u:object_r:exported_dalvik_prop:s0 exact string
 dalvik.vm.boot-dex2oat-threads u:object_r:exported_dalvik_prop:s0 exact int
 dalvik.vm.boot-image u:object_r:exported_dalvik_prop:s0 exact string
+dalvik.vm.bgdexopt.new-classes-percent u:object_r:exported_dalvik_prop:s0 exact int
+dalvik.vm.bgdexopt.new-methods-percent u:object_r:exported_dalvik_prop:s0 exact int
 dalvik.vm.checkjni u:object_r:exported_dalvik_prop:s0 exact bool
 dalvik.vm.dex2oat-Xms u:object_r:exported_dalvik_prop:s0 exact string
 dalvik.vm.dex2oat-Xmx u:object_r:exported_dalvik_prop:s0 exact string
@@ -416,6 +418,7 @@ ro.crypto.volume.options u:object_r:exported2_vold_prop:s0 exact string
 ro.dalvik.vm.native.bridge u:object_r:exported_dalvik_prop:s0 exact string
 ro.enable_boot_charger_mode u:object_r:exported3_default_prop:s0 exact bool
 ro.gfx.driver.0 u:object_r:exported3_default_prop:s0 exact string
+ro.gfx.driver.1 u:object_r:exported3_default_prop:s0 exact string
 ro.gfx.angle.supported u:object_r:exported3_default_prop:s0 exact bool
 ro.hdmi.device_type u:object_r:exported3_default_prop:s0 exact string
 ro.hdmi.wake_on_hotplug u:object_r:exported3_default_prop:s0 exact bool
